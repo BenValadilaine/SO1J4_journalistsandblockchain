@@ -14,7 +14,8 @@ copy_hash = hashCurrency.transform_values(&:to_f)
 sorted = copy_hash.values.sort #min values on top
 sorted_reversed = sorted.reverse #max values on top
 
-maxValue = sorted[0]
+
+maxValue = sorted_reversed[0]
 i=1
 while
   sorted_reversed[i] == maxValue
@@ -23,9 +24,10 @@ while
 end
 
 minValue = sorted[0]
-i=length_currency
+p minValue
+i=1
 while
   sorted[i] == minValue
   p sorted[i]
-  i -= 1
+  i += 1
 end
