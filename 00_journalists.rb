@@ -53,3 +53,18 @@ wherIsEpenser = journalists.index("@epenser")
 puts "@epenser est à la place #{wherIsEpenser + 1}"
 
 #Sors-moi une répartition des handle par taille de ces derniers (nombre de handle avec 1 caractère, nombre de handle avec 2 caractères, nombre de handle avec 3 caractères, etc)
+
+size_array=[]
+for item in journalists
+  l=item.length
+  size_array |= [l]
+end
+puts size_array
+handle_size=[]
+for item in journalists
+  handle_size << item.length
+
+end
+for item in size_array
+  puts "counting : #{handle_size.count(item)} of #{item} characters"
+end
