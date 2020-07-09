@@ -24,7 +24,7 @@ puts ("Il y a #{countSize} élements avec une taille de 5 caractères sans le @.
 #Combien commencent par une majuscule (première lettre juste après le @) ?
 i = 0
 journalists.each do |majoumin|
-  noat = majoumin.delete "@"
+  noat = majoumin.delete "@"+"_"
   first_letter = noat.chr
 
   if first_letter.upcase == first_letter
@@ -43,12 +43,10 @@ journalists_cp.sort! {|first, second| first <=> second}
 puts journalists_cp
 
 #Trie la liste de handle par taille des handle (les plus petits en premiers, les plus grands après)
-=begin
-journalists.each do |countJ|
-  countJ.length
+puts "Les handles triés par ordre de grandeur : "
+liste_ordre_longueur = journalists.sort_by(&:length)
+puts liste_ordre_longueur
 
-end
-=end
 
 #Quelle est la position dans l'array de la personne @epenser ?
 wherIsEpenser = journalists.index("@epenser")

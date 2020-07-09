@@ -7,7 +7,6 @@ length_currency = name_currency.length
 hashCurrency = Hash.new
 otherHash = name_currency.zip(value_currency).each {|a,b| hashCurrency[a]=b}
 #Le .each n'est pas nécessaire, ruby le met implicitement
-# puts hashCurrency <-- à réafficher au cas où
 
 #Quelle est la monnaie avec le plus de valeur ?
 copy_hash = hashCurrency.transform_values(&:to_f)
@@ -15,19 +14,77 @@ sorted = copy_hash.values.sort #min values on top
 sorted_reversed = sorted.reverse #max values on top
 
 
+#On récupère les min et max values.
 maxValue = sorted_reversed[0]
 i=1
 while
   sorted_reversed[i] == maxValue
-  p sorted_reversed[i]
   i += 1
 end
 
 minValue = sorted[0]
-p minValue
 i=1
 while
   sorted[i] == minValue
-  p sorted[i]
   i += 1
+end
+
+p maxValue
+p minValue
+
+
+#On affiche les min et max values avec le nom de leur currency
+#puts copy_hash.select{|name_currency, value_currency| copy_hash[value_currency] == maxValue}
+
+puts "Voici les devises qui ont la plus grande valeur :"
+copy_hash.each do |k,v|
+  if
+    v == maxValue
+    print "#{k+ ", "}"
+  end
+end
+puts " "
+
+puts "Voici les devises qui ont la plus petite valeur :"
+
+copy_hash.each do |k,v|
+  if
+    v == minValue
+    print "#{k+ ", "}"
+  end
+end
+
+puts ""
+puts ""
+puts "Les devises dont le cours est inférieur à 6000 copek :"
+valmax6000 = 0.0
+hash6000 = {}
+copy_hash.each do |k,v|
+  if
+    6000 > v
+    puts "#{k+ ", "}"
+  end
+end
+
+puts ""
+puts ""
+puts "La devise la plus chère parmi celles dont le cours est inférieur à 6000 :"
+
+copy_hash.each do |k,v|
+  if v < 6000
+    hash6000[k] = v
+  end
+end
+
+hash6000.each do |k,v|
+  if
+    valmax6000 < v
+    valmax6000 = v
+  end
+end
+
+hash6000.each do |k,v|
+  if v == valmax6000
+    puts k
+  end
 end
