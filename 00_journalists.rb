@@ -43,3 +43,15 @@ journalists_cp.sort! {|first, second| first <=> second}
 puts journalists_cp
 
 #Trie la liste de handle par taille des handle (les plus petits en premiers, les plus grands après)
+=begin
+journalists.each do |countJ|
+  countJ.length
+
+end
+=end
+
+#Quelle est la position dans l'array de la personne @epenser ?
+wherIsEpenser = journalists.index("@epenser")
+puts "@epenser est à la place #{wherIsEpenser + 1}"
+
+#Sors-moi une répartition des handle par taille de ces derniers (nombre de handle avec 1 caractère, nombre de handle avec 2 caractères, nombre de handle avec 3 caractères, etc)
